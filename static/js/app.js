@@ -54,10 +54,8 @@ filterEntries.on("click", function () {
     console.log(tableData);
 });
 
-var clearEntries = d3.select("#clear-btn");
-clearEntries.on("click", function () {
-    location.reload();
-});
+// d3.selectAll(".filter-btn").on("change", updateFilters);
+// buildTable(tableData);
 
 buildTable();
 
