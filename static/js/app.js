@@ -2,9 +2,10 @@
 var tableData = data;
 
 // // YOUR CODE HERE!
-
+// Define table body
 var tbody = d3.select("tbody");
 
+// Build Table
 console.log(data);
 
  function buildTable(data) {
@@ -18,24 +19,24 @@ console.log(data);
      });
  }
 
-
-
+// What happens when filter button is clicked
 var filterEntries = d3.select("#filter-btn");
 filterEntries.on("click", function () {
+    // Prevent page from refreshing
     d3.event.preventDefault();
-    
+    // Select element and get node
     var datetimeElement = d3.select("#datetime");
     var citynameElement = d3.select("#city");
     var statenameElement = d3.select("#state");
     var countrynameElement = d3.select("#country");
     var shapenameElement = d3.select("#shape");
-    
+    // Get value property of inputs
     var datetimeValue = datetimeElement.property("value");
     var citynameValue = citynameElement.property("value").toLowerCase().trim();
     var statenameValue = statenameElement.property("value").toLowerCase().trim();
     var countrynameValue = countrynameElement.property("value").toLowerCase().trim();
     var shapenameValue = shapenameElement.property("value").toLowerCase().trim();
-    
+    // Create if statments for multiple filters
     if (datetimeValue != "") {
         tableData = tableData.filter(entry => entry.datetime === datetimeValue);
     }
@@ -54,11 +55,14 @@ filterEntries.on("click", function () {
     console.log(tableData);
 });
 
-// d3.selectAll(".filter-btn").on("change", updateFilters);
-// buildTable(tableData);
+// clear button refreshes the page to reset everything
+// var clearEntries = d3.select("#clear-btn");
+// clearEntries.on("click", function() {
+    // location.reload();
+// })
 
-buildTable();
-
+buildTable()
+// Create loop through all data to show everything in dataset
  function buildTable() {
      console.log(tableData);
      tableData.map(function(ufoSightings) {
